@@ -1,16 +1,30 @@
-# This is a sample Python script.
+import random
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+from Authentification import login, signup
+from Book import Book
+from Guest import Guest
+from Librarian import Librarian
+from Library import Library
+from Member import Member
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+def main():
+    current_user = None
+    print("generation of a librarian...")
+    librarian = Librarian()
+    print("generation of a guest...")
+    choice = 0
+    while choice not in [1, 2]:
+        print("\t1. Login")
+        print("\t2. Signup")
+        print("\t3. Guest")
+        choice = int(input("-> "))
+        if choice == 1:
+            while current_user is None:
+                user_id = input("enter an id\n")
+                current_user = login(user_id)
+            print(current_user.id)
 
 
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    main()
