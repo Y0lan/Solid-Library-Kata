@@ -1,7 +1,3 @@
-import uuid
-from datetime import date
-
-
 class Book:
     def __init__(self,
                  title,

@@ -1,6 +1,6 @@
-from Library import LIBRARY
-from UserType import UserTypes
-from User import User
+from library import LIBRARY
+from usertypes import UserTypes
+from user import User
 
 
 class Guest(User):

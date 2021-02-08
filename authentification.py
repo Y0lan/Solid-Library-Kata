@@ -1,5 +1,5 @@
 import uuid
-from UserType import UserTypes
+from usertypes import UserTypes
 
 user_in_memory = set()
 
@@ -33,3 +33,4 @@ def find_user_by_id(user_id):
     for user in user_in_memory:
         if user.id == user_id:
             return user
+    return None

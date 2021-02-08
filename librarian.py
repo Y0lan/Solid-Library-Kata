@@ -1,7 +1,7 @@
-from Book import Book
-from Library import LIBRARY
-from User import User
-from UserType import UserTypes
+from book import Book
+from library import LIBRARY
+from user import User
+from usertypes import UserTypes
 
 
 class Librarian(User):
@@ -13,7 +13,7 @@ class Librarian(User):
 
     def add_book(self, title, author):
         book = Book(title, author)
-        self.library.books.add(book)
+        self.library.add(book)
         print('librarian added a book [ {}, {} ]'.format(book.title, book.author))
 
 
