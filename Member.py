@@ -10,7 +10,7 @@ class Member(User):
     type = UserTypes.MEMBERS.value
     number_book_borrowed = 0
 
-    def __init__(self, library):
+    def __init__(self):
         super().__init__(self.type)
         self.library = LIBRARY
 
@@ -21,16 +21,14 @@ class Member(User):
 
         book = self.library.search_book_by_title(title)
         if book is None:
-            print("Can't borrow a book that does not exist...")
+            print("Can't borrow a book that does not exist or is already borrowed...")
             return
+        book = book[0]
         if book.is_borrowed:
             print("This book is unavailable until ", book.borrowedUntil)
             return
 
-        book.is_borrowed = True
-        book.borrowedAt = date.today()
-        book.borrowedUntil = book.borrowedAt + relativedelta(weeks=+3)
-        book.borrowedBy = self.id
+        book = LIBRARY.mark_borrowed(title, self.id)
         self.number_book_borrowed += 1
         print("{} is_borrowed successfully, please give it back before {}".format(book.title, book.borrowedUntil))
 
