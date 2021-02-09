@@ -28,6 +28,7 @@ class Member(User):
         book = mark_borrowed(title, self.id)
         self.number_book_borrowed += 1
         print("{} is_borrowed successfully, please give it back before {}".format(book.title, book.borrowed_until))
+        return book
 
     def send_back(self, title=""):
         book = search_book_by_title(title)
@@ -41,3 +42,4 @@ class Member(User):
         mark_return(title)
         print("{} returned successfully".format(book.title))
         self.number_book_borrowed -= 1
+        return book

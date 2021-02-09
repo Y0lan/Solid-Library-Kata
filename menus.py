@@ -101,7 +101,6 @@ def find_book_title():
 
 def member_menu(member):
     choice = 0
-    book = None
     while choice not in [1, 2, 3, 4, 5, 6]:
         print("\t1. Search a book by title")
         print("\t2. Search books by author")

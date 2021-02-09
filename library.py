@@ -11,25 +11,29 @@ def search_book_by_title(title):
 
 
 def mark_borrowed(title, user_id):
-    book = search_book_by_title(title)[0]
-    LIBRARY.remove(book)
-    book.is_borrowed = True
-    book.borrowed_at = date.today()
-    book.borrowed_until = book.borrowed_at + relativedelta(months=+1)
-    book.borrowed_by = user_id
-    LIBRARY.add(book)
-    return book
+    book = search_book_by_title(title)
+    if book:
+        book = book[0]
+        LIBRARY.remove(book)
+        book.is_borrowed = True
+        book.borrowed_at = date.today()
+        book.borrowed_until = book.borrowed_at + relativedelta(months=+1)
+        book.borrowed_by = user_id
+        LIBRARY.add(book)
+        return book
 
 
 def mark_return(title):
-    book = search_book_by_title(title)[0]
-    LIBRARY.remove(book)
-    book.is_borrowed = False
-    book.borrowed_at = None
-    book.borrowed_until = None
-    book.borrowed_by = None
-    LIBRARY.add(book)
-    return book
+    book = search_book_by_title(title)
+    if book:
+        book = book[0]
+        LIBRARY.remove(book)
+        book.is_borrowed = False
+        book.borrowed_at = None
+        book.borrowed_until = None
+        book.borrowed_by = None
+        LIBRARY.add(book)
+        return book
 
 
 def search_book_by_author(author):
